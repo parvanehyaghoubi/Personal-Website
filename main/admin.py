@@ -11,7 +11,7 @@ class Skill_2_Admin(admin.ModelAdmin):
     list_display_links = ['id', 'title']
     list_editable = ['percent']
 
-class ServiceAdmin(admin.ModelAdmin):
+class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'icon']
     list_display_links = ['id', 'title']
     list_editable = ['icon']
@@ -21,15 +21,15 @@ class AcademyAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'title']
     list_editable = ['icon']
 
-class BlogAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'date']
-    list_display_links = ['id', 'title', 'date']
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title']
+    list_display_links = ['id', 'title']
 
 
 
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Skill_2, Skill_2_Admin)
-admin.site.register(Service, ServiceAdmin)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Academy, AcademyAdmin)
-admin.site.register(Blog, BlogAdmin)
+admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(Basics)

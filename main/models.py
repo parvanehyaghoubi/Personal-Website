@@ -1,5 +1,6 @@
 from django.db import models
-import datetime
+from ckeditor.fields import RichTextField
+# import datetime
 
 
 class Basics(models.Model):
@@ -11,7 +12,7 @@ class Basics(models.Model):
     avatar = models.ImageField(upload_to='photos/', blank=True)
 
     def __str__(self):
-        return 'Parvaneh'
+        return f'{self.web_title}'
 
 class Skill(models.Model):
     title = models.CharField(max_length=40, blank=True)
@@ -30,10 +31,11 @@ class Skill_2(models.Model):
     def __str__(self):
         return f'{self.id} - {self.title} ({self.percent}%)'
 
-class Service(models.Model):
+class Project(models.Model):
     icon = models.CharField(max_length=30, blank=True)
     title = models.CharField(max_length=50, blank=True)
-    text = models.TextField(blank=True)
+    text = RichTextField(blank=True)
+    link = models.URLField(blank=True)
 
     def __str__(self):
         return f'{self.id} - {self.title}'
@@ -50,14 +52,14 @@ class Academy(models.Model):
     def __str__(self):
         return f'{self.id} - {self.title}'
 
-class Blog(models.Model):
+class Certificate(models.Model):
     class Meta:
-        verbose_name_plural = 'Posts'
+        verbose_name_plural = 'Certificates'
 
-    title = models.CharField(max_length=70, blank=True)
-    text = models.TextField(blank=True)
-    image = models.ImageField(upload_to='photos/blog/', blank=True)
-    date = models.DateField(default=datetime.datetime.now)
+    title = models.CharField(max_length=100, blank=True)
+    text = RichTextField(blank=True)
+    featured_image = models.ImageField(upload_to='photos/certificates', blank=True)
+    date = RichTextField(blank=True)
 
     def __str__(self):
-        return f'{self.id} - {self.title} ({self.date})'
+        return f'{self.id} - {self.title} ({self.text})'

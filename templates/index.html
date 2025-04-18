@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title -->
-    <title>parvaneh Yaghoubi</title>
+    <title>{{ basics.web_title }}</title>
 
     <!-- Font-Awesome CSS -->
     <link rel="stylesheet" href="{% static 'vendors/font-awesome/css/all.min.css' %}"/>
@@ -39,7 +39,7 @@
 
     <!-- Logo -->
     <a class="logo" href="#home">
-        <h2> Parvaneh </h2>
+        <h2> From concept to clean code </h2>
         <!-- <img src="assets/images/logo.png" alt="logo" /> -->
     </a>
     <!-- Logo End -->
@@ -48,16 +48,13 @@
     <nav class="navbar">
         <a href="#home">home</a>
         <a href="#about">about</a>
-        <a href="#service">service</a>
-        <a href="#portfolio">portfolio</a>
-        <a href="#testimonial">testimonials</a>
-        <a href="#blog">blogs</a>
+        <a href="#project">project</a>
+        <a href="#education">education</a>
         <a href="#contact">contact</a>
     </nav>
 
     <!-- Menubar -->
     <div class="fas fa-bars" id="menu-btn"></div>
-
 </header>
 <!-------------------- Header Area (End) -------------------->
 
@@ -71,14 +68,14 @@
             <div class="text">
                 <h2>hi there!</h2>
                 <h1>I Am a <span class="typing-text"></span></h1>
-                <p>Creative web developer offering 4+ years of experience providing high-impact web solutions for many
+                <p>Creative Python and Web Developer offering 2+ years of experience providing high-impact web solutions for
                     different organizations.</p>
                 <a href="#" class="btn">about me <i class="fas fa-user"></i></a>
             </div>
         </div>
 
         <div class="image">
-            <img src="{% static 'images/Home/portfolio-img.jpg' %}" alt="Home-Image">
+            <img src="{{ basics.avatar.url }}" alt="Home-Image">
         </div>
 
     </div>
@@ -90,95 +87,66 @@
 
 <!-------------------- About Area (Start) -------------------->
 <section class="about" id="about">
-
     <div class="box-container">
-
         <div class="image">
-            <img src="{% static 'images/About/portfolio-img.jpg' %}" alt="portfolio-img">
+            <img src="{{ basics.avatar.url }}" alt="portfolio-img">
         </div>
-
         <div class="content">
-
             <h2>My name is Parvaneh Yaghoubi.</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae aut adipisci necessitatibus veniam, provident
-                vero architecto praesentium, non sequi libero corrupti molestias.
-                Architecto voluptate eligendi maiores, error magni accusamus officia.</p>
-
+            <p>AI and Biomedical Engineer with two years of experience in Python programming, Brain signal processing,
+                and Data science. Skilled in developing Machine Learning and Deep Learning models, Django Framework,
+                and Data Visualization. Familiar with JavaScript, quick to learn, and a proactive team player focused on
+                delivering high-quality results and achieving project success.</p>
             <div class="about-info">
-
                 <div class="info">
-                    <h4>age: <span>23</span></h4>
+                    <h4>age: <span>27</span></h4>
                     <h4>gender: <span>female</span></h4>
-                    <h4>language: <span>urdu, english</span></h4>
-                    <h4>work: <span>Front-End developer</span></h4>
+                    <h4>language: <span>Farsi, english</span></h4>
+                    <h4>work: <span>Freelancer</span></h4>
                     <h4>freelance: <span>available</span></h4>
-                    <a href="#" class="btn">download CV <i class="fas fa-download"></i></a>
+{#                    <a href="#" class="btn">download CV <i class="fas fa-download"></i></a>#}
                 </div>
-
                 <div class="counting">
-
                     <div class="box">
-                        <h1 class="count" data-count="4">4+</h1>
+                        <h1 class="count" data-count="2">2+</h1>
                         <h3>years of experience</h3>
                     </div>
-
                     <div class="box">
-                        <h1 class="count" data-count="100">100+</h1>
+                        <h1 class="count" data-count="10">10+</h1>
                         <h3>projects completed</h3>
                     </div>
-
-                    <div class="box">
-                        <h1 class="count" data-count="80">80+</h1>
-                        <h3>happy clients</h3>
-                    </div>
-
-                    <div class="box">
-                        <h1 class="count" data-count="20">20+</h1>
-                        <h3>awards won</h3>
-                    </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-        <div class="skill-container">
-
-            <div class="heading">
-                <h2>my <span>skills</span></h2>
-            </div>
-
-            <div class="skills">
-                <div class="skill-item item1">
-                    {% for skill in skills %}
+    <div class="skill-container">
+        <div class="heading">
+            <h2>my <span>skills</span></h2>
+        </div>
+        <div class="skills">
+            <div class="skill-item item1">
+                {% for skill in skills %}
                     <div class="box">
-                    <div class="progress-container">
-                        <h3>{{ skill.title }}<span> {{ skill.percent }}% </span> </h3>
-                        <div style="width: 100%; background: #222222; border-radius: 10px; overflow: hidden; height: 12px;">
-                            <div style="width: {{ skill.percent }}%; background: #bc8cf2; height: 100%;
-                            transition: width 0.5s;"> </div>
+                        <div class="progress-container">
+                            <h3>{{ skill.title }}<span> {{ skill.percent }}% </span></h3>
+                            <div style="width: 100%; background: #222222; border-radius: 10px; overflow: hidden; height: 12px;">
+                                <div style="width: {{ skill.percent }}%; background: #bc8cf2; height: 100%;
+                                        transition: width 0.5s;"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
-                </div>
-
-
-                <div class="skill-item item2">
-                    {% for skill in skills_2 %}
+            </div>
+            <div class="skill-item item2">
+                {% for skill in skills_2 %}
                     <div class="box">
-                    <div class="progress-container">
-                        <h3>{{ skill.title }}<span> {{ skill.percent }}% </span> </h3>
-                        <div style="width: 100%; background: #222222; border-radius: 10px; overflow: hidden; height: 12px;">
-                            <div style="width: {{ skill.percent }}%; background: #bc8cf2; height: 100%;
-                            transition: width 0.5s;"> </div>
+                        <div class="progress-container">
+                            <h3>{{ skill.title }}<span> {{ skill.percent }}% </span></h3>
+                            <div style="width: 100%; background: #222222; border-radius: 10px; overflow: hidden; height: 12px;">
+                                <div style="width: {{ skill.percent }}%; background: #bc8cf2; height: 100%;
+                                        transition: width 0.5s;"></div>
+                            </div>
                         </div>
-
-                    </div>
                     </div>
                 {% endfor %}
             </div>
@@ -187,450 +155,70 @@
 </section>
 <!-------------------- About Area (End) -------------------->
 
-
-<!-------------------- Qualification Area (Start) -------------------->
-<section class="qualification">
-
+<!-------------------- Project Area (Start) -------------------->
+<section class="service" id="project">
     <div class="heading">
-        <h2>my <span>qualification</span></h2>
+        <h2>my <span>projects</span></h2>
     </div>
-
     <div class="box-container">
+        {% for project in projects %}
+        <div class="service-item">
+            <a href="{{ project.link }}">
+                <i class="{{ project.icon }}"></i>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.text }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<!-------------------- Project Area (End) -------------------->
 
+<br>
+<!-------------------- Education Area (Start) -------------------->
+<section class="qualification" id="education">
+    <div class="heading">
+        <h2>my <span>education</span></h2>
+    </div>
+    <div class="box-container">
         <div class="education">
-
+            {% for academic in academics %}
             <div class="experience-item">
-                <i class="fas fa-graduation-cap"></i>
+                <i class="{{ academic.icon }}"></i>
                 <div class="content">
-                    <span>2015 - 2016</span>
-                    <h3>engineering</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
+                    <span>{{ academic.year }}</span>
+                    <h3>{{ academic.title }}</h3>
+                    <p>{{ academic.text }}</p>
                 </div>
             </div>
-
-            <div class="experience-item">
-                <i class="fas fa-graduation-cap"></i>
-                <div class="content">
-                    <span>2016 - 2017</span>
-                    <h3>engineering</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <i class="fas fa-graduation-cap"></i>
-                <div class="content">
-                    <span>2017 - 2018</span>
-                    <h3>engineering</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
-
-        <div class="experience">
-
-            <div class="experience-item">
-                <i class="fas fa-briefcase"></i>
-                <div class="content">
-                    <span>2018 - 2019</span>
-                    <h3>front-end development</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <i class="fas fa-briefcase"></i>
-                <div class="content">
-                    <span>2019 - 2020</span>
-                    <h3>front-end development</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <i class="fas fa-briefcase"></i>
-                <div class="content">
-                    <span>2020 - 2021</span>
-                    <h3>front-end development</h3>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.
-                        Vitae Vel Quasi Consectetur Expedita Ipsam Similique Maiores
-                        Ipsa? Error, Debitis Ullam.</p>
-                </div>
-            </div>
-
-        </div>
-
     </div>
 </section>
+<!-------------------- Education Area (End) -------------------->
 
-<!-------------------- Qualification Area (End) -------------------->
 
-
-<!-------------------- Services Area (Start) -------------------->
-<section class="service" id="service">
-
+<!-------------------- Certificate Area (Start) -------------------->
+<section class="portfolio">
     <div class="heading">
-        <h2>my <span>services</span></h2>
+        <h2>my <span>certificates</span></h2>
     </div>
-
-    <div class="box-container">
-
-        <div class="service-item">
-            <i class="fas fa-code"></i>
-            <h3>web design</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-        <div class="service-item">
-            <i class="fas fa-paint-brush"></i>
-            <h3>graphic design</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-        <div class="service-item">
-            <i class="fas fa-camera"></i>
-            <h3>photography</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-        <div class="service-item">
-            <i class="fas fa-bullhorn"></i>
-            <h3>digital marketing</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-        <div class="service-item">
-            <i class="far fa-file-video"></i>
-            <h3>video editing</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-        <div class="service-item">
-            <i class="fas fa-search-dollar"></i>
-            <h3>SEO Marketing</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Ex repellendus porro facilis.</p>
-        </div>
-
-    </div>
-
-</section>
-<!-------------------- Services Area (End) -------------------->
-
-
-<!-------------------- Portfolio Area (Start) -------------------->
-<section class="portfolio" id="portfolio">
-
-    <div class="heading">
-        <h2>my <span>portfolio</span></h2>
-    </div>
-
     <div class="gallery">
-
-        <ul class="controls">
-            <li class="button btn active" data-filter="all">all</li>
-            <li class="button btn" data-filter="web">web development</li>
-            <li class="button btn" data-filter="design">graphic design</li>
-            <li class="button btn" data-filter="photography">photography</li>
-        </ul>
-
         <div class="box-container">
-
+            {% for certificate in certificates %}
             <div class="portfolio-item image web">
-                <img src="{% static 'images/Portfolio/portfolio-1.png" alt="Portfolio-Image' %}"/>
+                <img src="{{ certificate.featured_image.url }}"/>
                 <div class="content">
-                    <h4>web development</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-img.jpg" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
+                    <h4 style="text-align: center">{{ certificate.title}}</h4>
+                    <p style="font-size: large;"><strong>{{ certificate.text | safe }}</strong></p>
+                    <br><p style="font-size: large;">{{ certificate.date }}</p>
                 </div>
             </div>
-
-            <div class="portfolio-item image web">
-                <img src="{% static 'images/Portfolio/portfolio-2.png" alt="Portfolio-Image' %}"/>
-                <div class="content">
-                    <h4>web development</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-2.png" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
-                </div>
-            </div>
-
-            <div class="portfolio-item image design">
-                <img src="{% static 'images/Portfolio/portfolio-3.png" alt="Portfolio-Image' %}"/>
-                <div class="content">
-                    <h4>graphic design</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-3.png" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
-                </div>
-            </div>
-
-            <div class="portfolio-item image design">
-                <img src="{% static 'images/Portfolio/portfolio-4.png" alt="Portfolio-Image' %}"/>
-                <div class="content">
-                    <h4>graphic design</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-4.png" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
-                </div>
-            </div>
-            <div class="portfolio-item image photography">
-                <img src="{% static 'images/Portfolio/portfolio-5.png" alt="Portfolio-Image' %}"/>
-                <div class="content">
-                    <h4>photography</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-5.png" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
-                </div>
-            </div>
-
-            <div class="portfolio-item image photography">
-                <img src="{% static 'images/Portfolio/portfolio-6.png" alt="Portfolio-Image' %}"/>
-                <div class="content">
-                    <h4>photography</h4>
-                    <p>category</p>
-                    <a data-effect="mfp-newspaper"
-                       href="{% static 'images/Portfolio/portfolio-6.png" class="view-btn"><i class="fas fa-search-plus' %}"></a></i>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
-
-    </div>
-
-</section>
-<!-------------------- Portfolio Area (End) -------------------->
-
-
-<!-------------------- Testimonials Area (Start) -------------------->
-<section class="testimonial" id="testimonial">
-
-    <div class="heading">
-        <h2><span>testimonials</span></h2>
-    </div>
-
-    <div class="swiper-container testimonial-slider">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide testi-item">
-                <img src="{% static 'images/Testimonials/pic-1.png" alt="Testimonial-Pic' %}"/>
-
-                <i class="fas fa-quote-left"></i>
-
-                <p class="comment">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatum deleniti architecto harum natus aliquid nostrum
-                    ad asperiores sequi, eligendi sint assumenda eum illo similique
-                    repellendus.
-                </p>
-
-                <div class="intro">
-                    <h3>jason roy</h3>
-                    <h5>web developer</h5>
-                </div>
-            </div>
-
-            <div class="swiper-slide testi-item">
-                <img src="{% static 'images/Testimonials/pic-2.png" alt="Testimonial-Pic' %}"/>
-
-                <i class="fas fa-quote-left"></i>
-
-                <p class="comment">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatum deleniti architecto harum natus aliquid nostrum
-                    ad asperiores sequi, eligendi sint assumenda eum illo similique
-                    repellendus.
-                </p>
-
-                <div class="intro">
-                    <h3>evelyn jones</h3>
-                    <h5>freelancer</h5>
-                </div>
-            </div>
-
-            <div class="swiper-slide testi-item">
-                <img src="{% static 'images/Testimonials/pic-3.png" alt="Testimonial-Pic' %}"/>
-
-                <i class="fas fa-quote-left"></i>
-
-                <p class="comment">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatum deleniti architecto harum natus aliquid nostrum
-                    ad asperiores sequi, eligendi sint assumenda eum illo similique
-                    repellendus.
-                </p>
-
-                <div class="intro">
-                    <h3>luke wood</h3>
-                    <h5>Python Developer</h5>
-                </div>
-            </div>
-
-            <div class="swiper-slide testi-item">
-                <img src="{% static 'images/Testimonials/pic-4.png" alt="Testimonial-Pic' %}"/>
-
-                <i class="fas fa-quote-left"></i>
-
-                <p class="comment">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatum deleniti architecto harum natus aliquid nostrum
-                    ad asperiores sequi, eligendi sint assumenda eum illo similique
-                    repellendus.
-                </p>
-
-                <div class="intro">
-                    <h3>sarah glenn</h3>
-                    <h5>freelancer</h5>
-                </div>
-            </div>
-
-            <div class="swiper-slide testi-item">
-                <img src="{% static 'images/Testimonials/pic-5.png" alt="Testimonial-Pic' %}"/>
-
-                <i class="fas fa-quote-left"></i>
-
-                <p class="comment">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatum deleniti architecto harum natus aliquid nostrum
-                    ad asperiores sequi, eligendi sint assumenda eum illo similique
-                    repellendus.
-                </p>
-
-                <div class="intro">
-                    <h3>samit patel</h3>
-                    <h5>graphic designer</h5>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination swiper-pagination1"></div>
-
     </div>
 </section>
-<!-------------------- Testimonials Area (End) -------------------->
-
-
-<!-------------------- Blog Area (Start) -------------------->
-<section class="blog" id="blog">
-
-    <div class="heading">
-        <h2>my <span>blog</span></h2>
-    </div>
-
-    <div class="swiper-container blog-slider">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide blog-item">
-                <div class="image">
-                    <img src="{% static 'images/Blogs/blog-1.png" alt="Blog-Image' %}"/>
-                </div>
-                <div class="content">
-                    <div class="intro">
-                        <h5><i class="fas fa-calendar-alt"></i><span>1st jan, 2022</span></h5>
-                        <h5><i class="fas fa-user"></i><span>by admin</span></h5>
-                    </div>
-                    <a class="main-heading" href="#">How to make your website responsive</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Nam possimus modi.
-                    </p>
-                    <a href="#" class="btn">read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="swiper-slide blog-item">
-                <div class="image">
-                    <img src="{% static 'images/Blogs/blog-2.png" alt="Blog-Image' %}"/>
-                </div>
-                <div class="content">
-                    <div class="intro">
-                        <h5><i class="fas fa-calendar-alt"></i><span>1st jan, 2022</span></h5>
-                        <h5><i class="fas fa-user"></i><span>by admin</span></h5>
-                    </div>
-                    <a class="main-heading" href="#">Learn Web Development As A Beginner</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Nam possimus modi.
-                    </p>
-                    <a href="#" class="btn">read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="swiper-slide blog-item">
-                <div class="image">
-                    <img src="{% static 'images/Blogs/blog-3.png" alt="Blog-Image' %}"/>
-                </div>
-                <div class="content">
-                    <div class="intro">
-                        <h5><i class="fas fa-calendar-alt"></i><span>1st jan, 2022</span></h5>
-                        <h5><i class="fas fa-user"></i><span>by admin</span></h5>
-                    </div>
-                    <a class="main-heading" href="#">Complete Roadmap For Web Development</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Nam possimus modi.
-                    </p>
-                    <a href="#" class="btn">read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="swiper-slide blog-item">
-                <div class="image">
-                    <img src="{% static 'images/Blogs/blog-4.png" alt="Blog-Image' %}"/>
-                </div>
-                <div class="content">
-                    <div class="intro">
-                        <h5><i class="fas fa-calendar-alt"></i><span>1st jan, 2022</span></h5>
-                        <h5><i class="fas fa-user"></i><span>by admin</span></h5>
-                    </div>
-                    <a class="main-heading" href="#">Websites & Tools For Every Web Developer</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Nam possimus modi.
-                    </p>
-                    <a href="#" class="btn">read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="swiper-slide blog-item">
-                <div class="image">
-                    <img src="{% static 'images/Blogs/blog-5.png" alt="Blog-Image' %}"/>
-                </div>
-                <div class="content">
-                    <div class="intro">
-                        <h5><i class="fas fa-calendar-alt"></i><span>1st jan, 2022</span></h5>
-                        <h5><i class="fas fa-user"></i><span>by admin</span></h5>
-                    </div>
-                    <a class="main-heading" href="#">Top 10 CSS tricks for every web developer</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Nam possimus modi.
-                    </p>
-                    <a href="#" class="btn">read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination swiper-pagination2"></div>
-
-    </div>
-
-</section>
-<!-------------------- Blog Area (End) -------------------->
+<!-------------------- Certificate Area (End) -------------------->
 
 
 <!-------------------- Contact Area (Start) -------------------->
@@ -684,7 +272,7 @@
                 <h4>github:</h4>
                 <div class="detail">
                     <div class="fab fa-github"></div>
-                    <p class="github">https://github.com/</p>
+                    <p class="github"><a href="https://github.com/parvanehyaghoubi">GitHub</a></p>
                 </div>
             </div>
         </div>
@@ -749,7 +337,7 @@
 <script>
     var typed = new Typed('.typing-text', {
 
-        strings: ['Python Developer', 'Web Designer', 'Data Scientist'],
+        strings: ['Python Developer', 'Web Developer', 'Data Scientist'],
         typeSpeed: 120,
         loop: true
     });
@@ -775,6 +363,5 @@
         e.preventDefault();
     });
 </script>
-
 </body>
 </html>
