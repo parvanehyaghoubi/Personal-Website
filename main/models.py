@@ -14,12 +14,14 @@ class Basics(models.Model):
     def __str__(self):
         return f'{self.web_title}'
 
+
 class Skill(models.Model):
     title = models.CharField(max_length=40, blank=True)
     percent = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.id} - {self.title} ({self.percent}%)'
+
 
 class Skill_2(models.Model):
     class Meta:
@@ -31,6 +33,7 @@ class Skill_2(models.Model):
     def __str__(self):
         return f'{self.id} - {self.title} ({self.percent}%)'
 
+
 class Project(models.Model):
     icon = models.CharField(max_length=30, blank=True)
     title = models.CharField(max_length=50, blank=True)
@@ -39,6 +42,7 @@ class Project(models.Model):
 
     def __str__(self):
         return f'{self.id} - {self.title}'
+
 
 class Academy(models.Model):
     class Meta:
@@ -52,6 +56,7 @@ class Academy(models.Model):
     def __str__(self):
         return f'{self.id} - {self.title}'
 
+
 class Certificate(models.Model):
     class Meta:
         verbose_name_plural = 'Certificates'
@@ -63,3 +68,13 @@ class Certificate(models.Model):
 
     def __str__(self):
         return f'{self.id} - {self.title} ({self.text})'
+
+
+class Information(models.Model):
+    class Meta:
+        verbose_name_plural = 'Informations'
+
+    phone = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(blank=True)
+    linkedin = models.URLField(blank=True)
+    github = models.URLField(blank=True)

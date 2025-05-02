@@ -1,5 +1,6 @@
 .idea/
 venv/
+.env
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,django
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,django
 
@@ -10,6 +11,7 @@ venv/
 __pycache__/
 local_settings.py
 db.sqlite3
+PrYgh_db.sqlite3
 db.sqlite3-journal
 media
 

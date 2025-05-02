@@ -68,7 +68,8 @@
             <div class="text">
                 <h2>hi there!</h2>
                 <h1>I Am a <span class="typing-text"></span></h1>
-                <p>Creative Python and Web Developer offering 2+ years of experience providing high-impact web solutions for
+                <p>Creative Python and Web Developer offering 2+ years of experience providing high-impact web solutions
+                    for
                     different organizations.</p>
                 <a href="#" class="btn">about me <i class="fas fa-user"></i></a>
             </div>
@@ -104,7 +105,7 @@
                     <h4>language: <span>Farsi, english</span></h4>
                     <h4>work: <span>Freelancer</span></h4>
                     <h4>freelance: <span>available</span></h4>
-{#                    <a href="#" class="btn">download CV <i class="fas fa-download"></i></a>#}
+                    {#                    <a href="#" class="btn">download CV <i class="fas fa-download"></i></a>#}
                 </div>
                 <div class="counting">
                     <div class="box">
@@ -162,13 +163,13 @@
     </div>
     <div class="box-container">
         {% for project in projects %}
-        <div class="service-item">
-            <a href="{{ project.link }}">
-                <i class="{{ project.icon }}"></i>
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.text }}</p>
-            </a>
-        </div>
+            <div class="service-item">
+                <a href="{{ project.link }}">
+                    <i class="{{ project.icon }}"></i>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.text }}</p>
+                </a>
+            </div>
         {% endfor %}
     </div>
 </section>
@@ -183,14 +184,14 @@
     <div class="box-container">
         <div class="education">
             {% for academic in academics %}
-            <div class="experience-item">
-                <i class="{{ academic.icon }}"></i>
-                <div class="content">
-                    <span>{{ academic.year }}</span>
-                    <h3>{{ academic.title }}</h3>
-                    <p>{{ academic.text }}</p>
+                <div class="experience-item">
+                    <i class="{{ academic.icon }}"></i>
+                    <div class="content">
+                        <span>{{ academic.year }}</span>
+                        <h3>{{ academic.title }}</h3>
+                        <p>{{ academic.text }}</p>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
@@ -206,14 +207,15 @@
     <div class="gallery">
         <div class="box-container">
             {% for certificate in certificates %}
-            <div class="portfolio-item image web">
-                <img src="{{ certificate.featured_image.url }}"/>
-                <div class="content">
-                    <h4 style="text-align: center">{{ certificate.title}}</h4>
-                    <p style="font-size: large;"><strong>{{ certificate.text | safe }}</strong></p>
-                    <br><p style="font-size: large;">{{ certificate.date }}</p>
+                <div class="portfolio-item image web">
+                    <img src="{{ certificate.featured_image.url }}"/>
+                    <div class="content">
+                        <h4 style="text-align: center">{{ certificate.title }}</h4>
+                        <p style="font-size: large;"><strong>{{ certificate.text | safe }}</strong></p>
+                        <br>
+                        <p style="font-size: large;">{{ certificate.date }}</p>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
@@ -233,62 +235,70 @@
         <div class="contact-info">
 
             <h3>get in touch</h3>
+            <p style="color: #bc8cf2">Let's connect and create something great!</p>
+            {% for information in informations %}
+                <div class="info-item">
+                    <h4>Phone:</h4>
+                    <div class="detail">
+                        <div class="fas fa-phone"></div>
+                        <p style="color: #bc8cf2">{{ information.phone }}</p>
+                    </div>
+                </div>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div class="info-item">
+                    <h4>email:</h4>
+                    <div class="detail">
+                        <div class="fas fa-envelope"></div>
+                        <p class="gmail" style="color: #bc8cf2">{{ information.email }}</p>
+                    </div>
+                </div>
 
-            <div class="info-item">
-                <h4>Phone:</h4>
-                <div class="detail">
-                    <div class="fas fa-phone"></div>
-                    <p>+123-456-789</p>
+                <div class="info-item">
+                    <h4>linkedin:</h4>
+                    <div class="detail">
+                        <div class="fab fa-linkedin"></div>
+                        <p class="linkedin"><a href="{{ information.linkedin }}" style="color: #bc8cf2">LinkedIn</a></p>
+                    </div>
                 </div>
-                <div class="detail">
-                    <div class="fas fa-phone"></div>
-                    <p>+111-222-333</p>
-                </div>
-            </div>
 
-            <div class="info-item">
-                <h4>email:</h4>
-                <div class="detail">
-                    <div class="fas fa-envelope"></div>
-                    <p class="gmail">abc@gmail.com</p>
+                <div class="info-item">
+                    <h4>github:</h4>
+                    <div class="detail">
+                        <div class="fab fa-github"></div>
+                        <p class="github"><a href="{{ information.github }}" style="color: #bc8cf2">GitHub</a></p>
+                    </div>
                 </div>
-                <div class="detail">
-                    <div class="fas fa-envelope"></div>
-                    <p class="gmail">xyz@gmail.com</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <h4>linkedin:</h4>
-                <div class="detail">
-                    <div class="fab fa-linkedin"></div>
-                    <p class="linkedin">https://www.linkedin.com/</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <h4>github:</h4>
-                <div class="detail">
-                    <div class="fab fa-github"></div>
-                    <p class="github"><a href="https://github.com/parvanehyaghoubi">GitHub</a></p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-
+        <p>
+           {% if sent %}
+                Sent Successfully👍
+            {% endif %}
+        </p>
+        {% if form.errors %}
+            <ul class="errorlist">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
         <form method="post" class="contact-form" id="contactUs-Form">
+            {% csrf_token %}
 
+{#            <label for="name"></label>#}
             <input type="text" name="name" class="box" id="name" placeholder="name" required/>
+{#            <label for="email"></label>#}
             <input type="email" name="email" class="box" id="email" placeholder="email" required/>
+{#            <label for="subject"></label>#}
             <input type="text" name="subject" class="box" id="subject" placeholder="subject" required/>
-            <textarea cols="30" rows="10" name="comment" id="comment" class="box" placeholder="message"></textarea>
+{#            <label for="comment"></label>#}
+            <textarea cols="30" rows="10" name="message" id="comment" class="box" placeholder="message" required></textarea>
             <button type="submit" class="btn" name="submit" id="submit">send message</button>
 
             <span class="alert" id="msg"></span>
-
         </form>
-
     </div>
 
 </section>
@@ -298,14 +308,13 @@
 <!-------------------- Footer Area (Start) -------------------->
 <footer>
     <div class="social">
-        <a href="#" class="fab fa-facebook-f"></a>
         <a href="#" class="fab fa-twitter"></a>
         <a href="#" class="fab fa-instagram"></a>
         <a href="#" class="fab fa-linkedin-in"></a>
     </div>
 
     <div class="content">
-        <p>created by <span>Parvaneh Yaghoubi</span> | all rights reserved</p>
+        <p>created by <span>{{ basics.web_title }}</span> | all rights reserved</p>
     </div>
 </footer>
 <!-------------------- Footer Area (End) -------------------->
@@ -350,7 +359,7 @@
         jQuery('#submit').html('Please wait');
         jQuery('#submit').attr('disabled', true);
         jQuery.ajax({
-            url: 'assets/php/submit.php',
+            url: '{% static 'php/submit.php' %}',
             type: 'post',
             data: jQuery('#contactUs-Form').serialize(),
             success: function (result) {
