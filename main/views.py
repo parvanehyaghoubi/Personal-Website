@@ -7,7 +7,7 @@ def index(request):
     skills_2 = Skill_2.objects.all()
     projects = Project.objects.all()
     academics = Academy.objects.all()
-    basics = Basics.objects.all()
+    basics = Basics.objects.all()[0]
     certificates = Certificate.objects.all()
     informations = Information.objects.all()
 

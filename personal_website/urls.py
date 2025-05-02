@@ -23,6 +23,6 @@ from django.conf import settings
 urlpatterns = [
     path('parvaneh/', admin.site.urls),
     path('', include('main.urls')),
-    path('contact/', include('contact.urls'))
+    path('', include('contact.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

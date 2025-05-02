@@ -167,7 +167,7 @@
                 <a href="{{ project.link }}">
                     <i class="{{ project.icon }}"></i>
                     <h3>{{ project.title }}</h3>
-                    <p>{{ project.text }}</p>
+                    <p>{{ project.text | safe}}</p>
                 </a>
             </div>
         {% endfor %}
@@ -213,7 +213,7 @@
                         <h4 style="text-align: center">{{ certificate.title }}</h4>
                         <p style="font-size: large;"><strong>{{ certificate.text | safe }}</strong></p>
                         <br>
-                        <p style="font-size: large;">{{ certificate.date }}</p>
+                        <p style="font-size: large;">{{ certificate.date | safe}}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -272,7 +272,7 @@
         </div>
         <p>
            {% if sent %}
-                Sent Successfully👍
+                Sent Successfully
             {% endif %}
         </p>
         {% if form.errors %}
@@ -308,9 +308,12 @@
 <!-------------------- Footer Area (Start) -------------------->
 <footer>
     <div class="social">
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin-in"></a>
+        {% for information in informations %}
+
+        <a href="{{ information.github }}" class="fab fa-github"></a>
+        <a href="{{ information.linkedin }}" class="fab fa-linkedin-in"></a>
+
+        {% endfor %}
     </div>
 
     <div class="content">
@@ -353,24 +356,24 @@
 </script>
 
 <!-- Contact-Form Script -->
-<script>
-    jQuery('#contactUs-Form').on('submit', function (e) {
-        jQuery('#msg').html('');
-        jQuery('#submit').html('Please wait');
-        jQuery('#submit').attr('disabled', true);
-        jQuery.ajax({
-            url: '{% static 'php/submit.php' %}',
-            type: 'post',
-            data: jQuery('#contactUs-Form').serialize(),
-            success: function (result) {
-                jQuery('#msg').html(result);
-                jQuery('#submit').html('Submit');
-                jQuery('#submit').attr('disabled', false);
-                jQuery('#contactUs-Form')[0].reset();
-            }
-        });
-        e.preventDefault();
-    });
-</script>
+{#<script>#}
+{#    jQuery('#contactUs-Form').on('submit', function (e) {#}
+{#        jQuery('#msg').html('');#}
+{#        jQuery('#submit').html('Please wait');#}
+{#        jQuery('#submit').attr('disabled', true);#}
+{#        jQuery.ajax({#}
+{#            url: '{% static 'php/submit.php' %}',#}
+{#            type: 'post',#}
+{#            data: jQuery('#contactUs-Form').serialize(),#}
+{#            success: function (result) {#}
+{#                jQuery('#msg').html(result);#}
+{#                jQuery('#submit').html('Submit');#}
+{#                jQuery('#submit').attr('disabled', false);#}
+{#                jQuery('#contactUs-Form')[0].reset();#}
+{#            }#}
+{#        });#}
+{#        e.preventDefault();#}
+{#    });#}
+{#</script>#}
 </body>
 </html>
