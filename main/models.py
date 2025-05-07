@@ -1,6 +1,5 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-# import datetime
 
 
 class Basics(models.Model):
@@ -10,6 +9,7 @@ class Basics(models.Model):
     web_title = models.CharField(max_length=120, blank=True)
     map = models.TextField(blank=True)
     avatar = models.ImageField(upload_to='photos/', blank=True)
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return f'{self.web_title}'

@@ -1,27 +1,23 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from .form import ContactForm
 
 
 def contact(request):
-    sent = False
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            name = cd['name']
-            email = cd['email']
-            subject = cd['subject']
-            message = cd['message']
+        name_ = request.POST['name']
+        email_ = request.POST['email']
+        subject_ = request.POST['subject']
+        message_ = request.POST['message']
+        msg = "name:\n{0}\nemail:\n{1}\nmessage:\n{2}".format(name_, email_, message_)
 
-            print(f"name: {name}")
-            print(f"email: {email}")
-            print(f"subject: {subject}")
-            print(f"message: {message}")
+        send_mail(
+            subject_,
+            msg,
+            'parvanehyaghoubi98@gmail.com',
+            ['parvanehyaghoubi98@gmail.com'],
+            fail_silently=False,
+        )
 
-            msg = "name{0}\nemail:{1}\nmessage:\n{2}".format(name, email, message)
-            send_mail(subject, msg, 'parvanehyaghoubi98@gmail.com', ['parvanehyaghoubi98@gmail.com'], fail_silently=False)
-            sent = True
+        return render(request, template_name='confirmation.html', context={'name_': name_})
     else:
-        form = ContactForm()
-    return render(request, template_name='index.html', context={'form': form, 'sent': sent})
+        return render(request, template_name='index.html')

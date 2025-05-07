@@ -1,9 +1,10 @@
 import os
+from decouple import config
+import environ
 
-# import environ
-#
-# env = environ.Env()
-# environ.Env.read_env()
+env = environ.Env()
+environ.Env.read_env()
+
 """
 Django settings for personal_website project.
 
@@ -121,12 +122,13 @@ USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'parvanehyaghoubi98@gmail.com'
-EMAIL_HOST_PASSWORD = 'email_host_password'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # <---------------------EmailSender--------------------->
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 

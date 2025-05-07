@@ -18,7 +18,7 @@
 
     <!-- Magnific-Popup CSS -->
     <link rel="stylesheet" href="{% static 'vendors/magnific-popup/magnific-popup.css' %}"/>
-
+    <link rel="icon" href="{% static 'css/favicon.ico' %}">
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
@@ -93,11 +93,8 @@
             <img src="{{ basics.avatar.url }}" alt="portfolio-img">
         </div>
         <div class="content">
-            <h2>My name is Parvaneh Yaghoubi.</h2>
-            <p>AI and Biomedical Engineer with two years of experience in Python programming, Brain signal processing,
-                and Data science. Skilled in developing Machine Learning and Deep Learning models, Django Framework,
-                and Data Visualization. Familiar with JavaScript, quick to learn, and a proactive team player focused on
-                delivering high-quality results and achieving project success.</p>
+            <h2>My name is {{ basics.web_title }}.</h2>
+            <p>{{ basics.description }}</p>
             <div class="about-info">
                 <div class="info">
                     <h4>age: <span>27</span></h4>
@@ -105,7 +102,7 @@
                     <h4>language: <span>Farsi, english</span></h4>
                     <h4>work: <span>Freelancer</span></h4>
                     <h4>freelance: <span>available</span></h4>
-                    {#                    <a href="#" class="btn">download CV <i class="fas fa-download"></i></a>#}
+                    {#<a href="#" class="btn">download CV <i class="fas fa-download"></i></a>#}
                 </div>
                 <div class="counting">
                     <div class="box">
@@ -270,30 +267,13 @@
                 </div>
             {% endfor %}
         </div>
-        <p>
-           {% if sent %}
-                Sent Successfully
-            {% endif %}
-        </p>
-        {% if form.errors %}
-            <ul class="errorlist">
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li>{{ field.label }}: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <form method="post" class="contact-form" id="contactUs-Form">
+        <form method="post" class="contact-form" id="contactUs-Form" action="{% url 'contact' %}">
             {% csrf_token %}
 
-{#            <label for="name"></label>#}
+
             <input type="text" name="name" class="box" id="name" placeholder="name" required/>
-{#            <label for="email"></label>#}
             <input type="email" name="email" class="box" id="email" placeholder="email" required/>
-{#            <label for="subject"></label>#}
             <input type="text" name="subject" class="box" id="subject" placeholder="subject" required/>
-{#            <label for="comment"></label>#}
             <textarea cols="30" rows="10" name="message" id="comment" class="box" placeholder="message" required></textarea>
             <button type="submit" class="btn" name="submit" id="submit">send message</button>
 
@@ -317,7 +297,7 @@
     </div>
 
     <div class="content">
-        <p>created by <span>{{ basics.web_title }}</span> | all rights reserved</p>
+        <p>Ⓒ 2025 created by <span>{{ basics.web_title }}</span> | all rights reserved</p>
     </div>
 </footer>
 <!-------------------- Footer Area (End) -------------------->
